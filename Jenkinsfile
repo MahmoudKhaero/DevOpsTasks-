@@ -10,7 +10,6 @@ pipeline {
                     docker build -t ${USER}/ngin -f Dockerfile .
                     echo "docker build done"
                     docker login -u ${USER} -p ${PASS}
-                    echo "ready to push"
                     docker push ${USER}/ngin
                     '''
                 }
