@@ -8,7 +8,6 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerid', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh '''
                     docker build -t ${USER}/ngin -f Dockerfile .
-                    echo "docker build done"
                     docker login -u ${USER} -p ${PASS}
                     docker push ${USER}/ngin
                     '''
