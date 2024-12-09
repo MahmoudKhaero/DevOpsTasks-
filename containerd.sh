@@ -1,8 +1,20 @@
 #!/bin/bash
 
-sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-sudo apt-get install -y containerd
-sudo systemctl start containerd
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+
+echo "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" | sudo tee /etc/apt/sources.list.d/docker.list
+
+sudo apt update
+
+sudo apt install -y containerd
+
+sudo mkdir -p /etc/containerd
+containerd config default | sudo tee /etc/containerd/config.toml
+
+sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/config.toml
+
+sudo systemctl restart containerd
 sudo systemctl enable containerd
-containerd --version
+sudo systemctl status containerd
+
+
