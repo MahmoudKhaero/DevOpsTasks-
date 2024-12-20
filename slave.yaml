@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: slave
+  name: slave
+spec:
+  containers:
+  - image: mahmoudkhairi/slave
+    name: slave
+    resources: {}
+    command:
+     - sleep
+     - "infinity"
+  nodeSelector:
+   node: node1
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

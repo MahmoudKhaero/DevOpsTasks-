@@ -1,2 +1,4 @@
-sudo kubeadm join 10.0.2.100:6443 --token 7qkfah.k55u95q7i0a9uhif \
-        --discovery-token-ca-cert-hash sha256:a5fe5a614bf84f57174f6386ff74ae35d2a97c59fcbd25be79a4607dd9e21d19 
+sudo kubeadm join 10.0.2.100:6443 --token l037g0.loxeqy8aapjbnsoj \
+	--discovery-token-ca-cert-hash sha256:d629e084543f2c5adac7ef1ce40582f758452cd6f376df260d699398d41e590f \
+     --ignore-preflight-errors=all
+     
